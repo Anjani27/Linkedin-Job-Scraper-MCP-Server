@@ -1,3 +1,12 @@
+---
+title: Linkedin Job Scraper MCP Server
+emoji: 💼
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # LinkedIn Scraper MCP Server
 
 An automated, intelligent LinkedIn Job Scraper that runs as a Model Context Protocol (MCP) server. This allows AI assistants (like Claude) to actively search, filter, and extract job listings from LinkedIn using an automated headless browser.
