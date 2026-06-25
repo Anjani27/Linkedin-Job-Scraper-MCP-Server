@@ -22,7 +22,9 @@ If you want to connect your AI directly to the hosted remote server, use this SS
 
 ## 🖥️ Web Dashboard (UI)
 
-![Dashboard UI Preview](dashboard.png)
+![Dashboard UI](dashbord.png)
+![Claude result](claude1.png)
+![claude result2](claude2.png)
 
 Because this project uses a custom Next.js server architecture, if you visit your live server's root URL:
 **👉 [https://anjanii-linkedin-job-scraper.hf.space](https://anjanii-linkedin-job-scraper.hf.space)**
@@ -72,6 +74,29 @@ To run this tool locally on your own machine alongside the Claude Desktop App:
 
 ---
 
+## 🌉 Connecting Claude Desktop to Hugging Face (Remote Bridge)
+
+If you want to use the **Claude Desktop App** but run the actual scraper backend in the cloud on **Hugging Face Spaces** (so it doesn't use your computer's CPU or require local Playwright installation), you can use the `mcp-remote` bridge!
+
+Add the following to your Claude Desktop config file (`%APPDATA%\Claude\claude_desktop_config.json` on Windows or `~/Library/Application Support/Claude/claude_desktop_config.json` on Mac):
+```json
+{
+  "mcpServers": {
+    "linkedin-scraper-remote": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://anjanii-linkedin-job-scraper.hf.space/mcp"
+      ]
+    }
+  }
+}
+```
+This automatically bridges the cloud Server-Sent Events (SSE) stream into a local format that your Claude App can read!
+
+---
+
 ## 🌐 Connecting to a Web MCP Client (Remote)
 
 If you are hosting this on Hugging Face Spaces (or running the SSE server locally):
@@ -89,3 +114,4 @@ If you are hosting this on Hugging Face Spaces (or running the SSE server locall
 
 A `Dockerfile` is included specifically for deploying this project to **Hugging Face Spaces** (Docker tier). 
 Simply upload the repository files to a new Docker Space, add your `GROQ_API_KEY` to the Space Settings -> Variables and secrets, and Hugging Face will automatically build the environment and host the MCP server for you.
+itory files to a new Docker Space, add your `GROQ_API_KEY` to the Space Settings -> Variables and secrets, and Hugging Face will automatically build the environment and host the MCP server for you.
